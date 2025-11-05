@@ -132,9 +132,11 @@
         </div>
       </div>
       <div class="hero-card">
-        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1600&auto=format&fit=crop" alt="Imagen representativa del negocio" />
-      </div>
-    </section>
+  <picture>
+    <source srcset="assets/hero_instalacion.webp" type="image/webp" />
+    <img src="assets/hero_instalacion.jpg?v=3" alt="Instalación de cargador EV" />
+  </picture>
+</div>
 
     <!-- SERVICIOS -->
     <section id="servicios">
@@ -382,6 +384,7 @@
     lb?.addEventListener('click', () => { lb.style.display = 'none'; lbImg.src = ''; });
   })();
 </script>
+
 
 
 
