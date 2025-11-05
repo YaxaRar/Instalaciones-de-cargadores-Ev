@@ -329,37 +329,28 @@
 
   <script>
     // --- Galería dinámica ---
-    (function(){
-      const files = [
-        '0ab2b6e8-ec70-4d15-80d1-efeef382c26c.png',
-        'Imagen de WhatsApp 2025-11-04 a las 18.18.03_f80e4811.jpg',
-        'Imagen de WhatsApp 2025-11-04 a las 18.18.02_072cf488.jpg',
-        'Imagen de WhatsApp 2025-11-04 a las 18.18.02_82d711c5.jpg',
-        'Imagen de WhatsApp 2025-11-04 a las 18.18.03_9cc7634d.jpg',
-        'Imagen de WhatsApp 2025-11-04 a las 18.18.01_6982b084.jpg',
-        'Imagen de WhatsApp 2025-11-04 a las 18.18.02_05d8ada5.jpg',
-        'Imagen de WhatsApp 2025-11-04 a las 18.18.01_f33ae2fa.jpg',
-        'Imagen de WhatsApp 2025-11-04 a las 18.18.03_0bed374f.jpg',
-        'Imagen de WhatsApp 2025-11-04 a las 18.18.03_ed4a4f7f.jpg'
-      ];
-      const grid = document.getElementById('galleryGrid');
-      if(grid){
-        grid.innerHTML = files.map(fn => `
-          <a class="card" href="assets/${fn}">
-            <img src="assets/${fn}" alt="Trabajo realizado" loading="lazy" />
-          </a>`).join('');
-      }
-      const lb = document.getElementById('lightbox');
-      const lbImg = document.getElementById('lightboxImg');
-      grid?.addEventListener('click', (e)=>{
-        const a = e.target.closest('a');
-        if(!a) return;
-        e.preventDefault();
-        lbImg.src = a.href;
-        lb.style.display = 'flex';
-      });
-      lb?.addEventListener('click', ()=>{ lb.style.display = 'none'; lbImg.src=''; });
-    })();
+    // --- Galería dinámica ---
+(function(){
+  const files = Array.from({length: 10}, (_, i) => `galeria/galeria${i+1}.jpg`);
+  const grid = document.getElementById('galleryGrid');
+  if(grid){
+    grid.innerHTML = files.map(fn => `
+      <a class="card" href="assets/${fn}">
+        <img src="assets/${fn}" alt="Trabajo realizado" loading="lazy" />
+      </a>`).join('');
+  }
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightboxImg');
+  grid?.addEventListener('click', (e)=>{
+    const a = e.target.closest('a');
+    if(!a) return;
+    e.preventDefault();
+    lbImg.src = a.href;
+    lb.style.display = 'flex';
+  });
+  lb?.addEventListener('click', ()=>{ lb.style.display = 'none'; lbImg.src=''; });
+})();
   </script>
 </body>
 </html>
+
