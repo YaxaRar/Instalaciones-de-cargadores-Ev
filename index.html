@@ -185,28 +185,34 @@
   <p class="sub">Clientes contando su experiencia con Instalaciones EV.</p>
 
   <div class="video-grid">
-    <!-- Testimonio 1 -->
     <div class="video-wrap">
-      <video controls preload="metadata" poster="assets/galeria/galeria1.jpg">
+      <video controls preload="metadata" playsinline poster="assets/galeria/galeria1.jpg"
+             onerror="this.nextElementSibling.style.display='block'">
         <source src="assets/videos/ev_1.mp4" type="video/mp4">
-        Tu navegador no soporta video HTML5.
       </video>
+      <a href="assets/videos/ev_1.mp4" style="display:none;color:#a7b5bd;text-align:center;margin-top:.5rem">
+        Abrir video 1 directamente
+      </a>
     </div>
 
-    <!-- Testimonio 2 -->
     <div class="video-wrap">
-      <video controls preload="metadata" poster="assets/galeria/galeria2.jpg">
+      <video controls preload="metadata" playsinline poster="assets/galeria/galeria2.jpg"
+             onerror="this.nextElementSibling.style.display='block'">
         <source src="assets/videos/ev_2.mp4" type="video/mp4">
-        Tu navegador no soporta video HTML5.
       </video>
+      <a href="assets/videos/ev_2.mp4" style="display:none;color:#a7b5bd;text-align:center;margin-top:.5rem">
+        Abrir video 2 directamente
+      </a>
     </div>
 
-    <!-- Testimonio 3 -->
     <div class="video-wrap">
-      <video controls preload="metadata" poster="assets/galeria/galeria3.jpg">
+      <video controls preload="metadata" playsinline poster="assets/galeria/galeria3.jpg"
+             onerror="this.nextElementSibling.style.display='block'">
         <source src="assets/videos/ev_3.mp4" type="video/mp4">
-        Tu navegador no soporta video HTML5.
       </video>
+      <a href="assets/videos/ev_3.mp4" style="display:none;color:#a7b5bd;text-align:center;margin-top:.5rem">
+        Abrir video 3 directamente
+      </a>
     </div>
   </div>
 </section>
@@ -376,6 +382,7 @@
     lb?.addEventListener('click', () => { lb.style.display = 'none'; lbImg.src = ''; });
   })();
 </script>
+
 
 
 
