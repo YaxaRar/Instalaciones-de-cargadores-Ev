@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Instalaciones EV | Inicio</title>
+  <meta name="description" content="Descripción breve de tu negocio y propuesta de valor." />
+  <meta name="theme-color" content="#0ea5e9" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Instalaciones EV" />
+  <meta property="og:description" content="Descripción breve de tu negocio." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.tudominio.com" />
+  <meta property="og:image" content="/og-image.jpg" />
+  <style>
+    :root{
+      --bg: #0b1213;          /* fondo oscuro */
+      --card: #121a1c;        /* tarjetas */
+      --text: #e6edf7;        /* texto principal */
+      --muted:#a7b5bd;        /* texto secundario */
+      --brand:#14b8a6;        /* turquesa del logo */
+      --accent:#0e7490;       /* apoyo */
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{width:min(1100px,92vw);margin-inline:auto}
+    .btn{display:inline-block;padding:.9rem 1.2rem;border-radius:999px;background:var(--brand);color:white;font-weight:600;box-shadow:var(--shadow);transition:.2s transform}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-outline{background:transparent;border:1px solid #2b3a55}
+    header{position:sticky;top:0;backdrop-filter:saturate(140%) blur(8px);background:rgba(11,18,32,.6);z-index:50;border-bottom:1px solid #1a2640}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:.7rem;font-weight:800}
+    .logo{display:grid;place-items:center;width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--brand),#60a5fa)}
+    .menu{display:flex;gap:1rem}
+    .menu a{padding:.6rem .8rem;border-radius:10px;color:var(--muted)}
+    .menu a:hover{background:#0f1830;color:var(--text)}
+    .nav-toggle{display:none}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:2rem;align-items:center;padding:64px 0}
+    .hero h1{font-size:clamp(32px,6vw,56px);line-height:1.05;margin:0 0 .6rem}
+    .hero p{color:var(--muted);font-size:1.05rem;margin:0 0 1.25rem}
+    .hero-card{background:var(--card);padding:22px;border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid #1b2846}
+
+    /* Badges */
+    .badges{display:flex;gap:.6rem;flex-wrap:wrap;margin:10px 0 20px}
+    .badge{background:#0f1830;color:#9fb1cc;border:1px solid #1b2846;padding:.42rem .65rem;border-radius:999px;font-size:.82rem}
+
+    /* Sections */
+    section{padding:56px 0;border-top:1px solid #13203c}
+    h2{font-size:clamp(24px,4.6vw,36px);margin:0 0 10px}
+    .sub{color:var(--muted);margin:0 0 22px}
+
+    /* Grid cards */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--card);padding:20px;border-radius:var(--radius);border:1px solid #1b2846;box-shadow:var(--shadow)}
+    .card h3{margin:0 0 .35rem}
+    .card p{color:var(--muted);margin:.2rem 0 0}
+
+    /* Video */
+    .video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .video-wrap{position:relative;width:100%;padding-top:56.25%;border-radius:var(--radius);overflow:hidden;border:1px solid #1b2846;box-shadow:var(--shadow);background:#000}
+    .video-wrap iframe,.video-wrap video{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+    /* CTA */
+    .input, .textarea, .select{width:100%;padding:12px;border-radius:10px;border:1px solid #243455;background:#0b1220;color:var(--text)}
+    .textarea{min-height:120px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width:640px){.form-row{grid-template-columns:1fr}}
+    .cta{display:flex;align-items:center;justify-content:space-between;gap:20px;background:linear-gradient(135deg,#0e7490,#155e75);padding:24px;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .cta h3{margin:0}
+
+    /* Footer */
+    footer{padding:36px 0;color:#9fb1cc}
+    footer .row{display:flex;gap:18px;justify-content:space-between;flex-wrap:wrap}
+    footer a{color:#c7d2fe}
+
+    /* WhatsApp bubble */
+    .wa{position:fixed;right:16px;bottom:16px;background:#25D366;color:#fff;display:grid;place-items:center;width:56px;height:56px;border-radius:50%;box-shadow:var(--shadow);font-weight:900}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width:640px){
+      .menu{display:none}
+      .nav-toggle{display:inline-flex;gap:.5rem;align-items:center;background:#0f1830;border:1px solid #1b2846;color:#cfe1ff;border-radius:10px;padding:.5rem .7rem}
+      .menu.open{display:flex;position:absolute;top:64px;left:50%;transform:translateX(-50%);flex-direction:column;background:#0b1220;border:1px solid #1b2846;border-radius:14px;padding:10px;width:min(92vw,420px)}
+      .grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#inicio" class="brand">
+        <img class="logo" src="assets/logo-ev.png" alt="Instalaciones EV" style="width:38px;height:38px;border-radius:10px;object-fit:cover;background:#0f1a1b;padding:4px"/>
+        <span>Instalaciones EV</span>
+      </a>
+      <nav class="menu" id="menu">
+        <a href="#servicios">Servicios</a>
+        <a href="#trabajos">Proyectos</a>
+        <a href="#galeria">Galería</a>
+        <a href="#testimonios">Testimonios</a>
+        <a href="#deja-testimonio">Deja tu testimonio</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">☰</button>
+    </div>
+  </header>
+
+  <main id="inicio" class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <div class="badges">
+          <span class="badge">Atención CDMX y EDOMEX</span>
+          <span class="badge">Cotización express</span>
+          <span class="badge">Garantía por escrito</span>
+        </div>
+        <h1>Tu solución en <span style="color:var(--brand)">instalación de cargadores para autos eléctricos</span> con calidad y rapidez</h1>
+        <p>Instalamos y configuramos cargadores para vehículos eléctricos (residencial y comercial) con materiales certificados, rutas limpias y garantía por escrito. Atención en CDMX y EDOMEX.</p>
+        <div style="display:flex;gap:.7rem;flex-wrap:wrap">
+          <a class="btn" href="#contacto">Pide una cotización</a>
+          <a class="btn btn-outline" href="#servicios">Ver servicios</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1600&auto=format&fit=crop" alt="Imagen representativa del negocio" />
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios">
+      <h2>Servicios</h2>
+      <p class="sub">Instalación segura y garantizada de cargadores EV. Más servicios pronto.</p>
+      <div class="grid">
+        <article class="card">
+          <h3>Instalación de cargadores EV</h3>
+          <p>Residencial y comercial. Tendido, canalización, protecciones y pruebas de carga.</p>
+        </article>
+        <article class="card">
+          <h3>Diagnóstico eléctrico</h3>
+          <p>Revisión de capacidad, balanceo de cargas y propuesta técnica.</p>
+        </article>
+        <article class="card">
+          <h3>Mantenimiento</h3>
+          <p>Limpieza, ajustes y pruebas periódicas para mantener la seguridad y desempeño.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- TRABAJOS / PORTAFOLIO -->
+    <section id="trabajos">
+      <h2>Proyectos recientes</h2>
+      <p class="sub">Algunos trabajos con cargadores BYD, Grizzl-E, Siemens y más.</p>
+      <div class="grid">
+        <article class="card">
+          <img src="assets/ev_1.jpg" alt="Instalación exterior con protección" />
+          <h3>Instalación residencial</h3>
+          <p>Canalización protegida y tablero con interruptor dedicado.</p>
+        </article>
+        <article class="card">
+          <img src="assets/ev_2.jpg" alt="Cargador en estacionamiento" />
+          <h3>Condominio</h3>
+          <p>Ruta limpia y pruebas de carga en cochera.</p>
+        </article>
+        <article class="card">
+          <img src="assets/ev_3.jpg" alt="Cargador BYD en pared" />
+          <h3>Comercial ligero</h3>
+          <p>Montaje en gabinete con señalética del sitio.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section id="testimonios">
+      <h2>Testimonios</h2>
+      <p class="sub">Clientes contando su experiencia con Instalaciones EV.</p>
+      <div class="video-grid">
+        <!-- Ejemplo YouTube: reemplaza VIDEO_ID por el ID real -->
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Testimonio 1" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <!-- Ejemplo MP4 local: coloca tu archivo en /assets/ -->
+        <div class="video-wrap">
+          <video controls preload="metadata" poster="assets/ev_hero.jpg">
+            <source src="assets/testimonio1.mp4" type="video/mp4"/>
+            Tu navegador no soporta video HTML5.
+          </video>
+        </div>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID2" title="Testimonio 2" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEJA TU TESTIMONIO -->
+    <section id="deja-testimonio">
+      <h2>Deja tu testimonio</h2>
+      <p class="sub">Cuéntanos cómo te fue con la instalación. Puedes pegar un link de video (YouTube, Drive) o adjuntarlo al abrir WhatsApp.</p>
+      <form class="card" id="testiForm">
+        <div class="form-row">
+          <label>Nombre
+            <input class="input" name="nombre" placeholder="Tu nombre" required />
+          </label>
+          <label>Tipo de instalación
+            <select class="select" name="tipo" required>
+              <option value="Residencial">Residencial</option>
+              <option value="Condominio">Condominio</option>
+              <option value="Comercial">Comercial</option>
+            </select>
+          </label>
+        </div>
+        <label>Tu experiencia
+          <textarea class="textarea" name="mensaje" placeholder="¿Qué te gustó? ¿Cómo te fue?" required></textarea>
+        </label>
+        <br/>
+        <label>Link de video (opcional)
+          <input class="input" name="video" placeholder="https://..." />
+        </label>
+        <br/>
+        <button class="btn" type="submit">Enviar por WhatsApp</button>
+        <p id="testiMsg" class="sub" style="margin-top:.6rem"></p>
+      </form>
+    </section>
+
+    <!-- NOSOTROS -->
+    <section id="nosotros">
+      <h2>Quiénes somos</h2>
+      <p class="sub">Experiencia, seguridad y trato directo.</p>
+      <div class="card">
+        <p>En <strong>Instalaciones EV</strong> nos especializamos en la instalación de cargadores para autos eléctricos. Trabajamos con materiales certificados, trazos pulcros y pruebas de carga al entregar. Cobertura CDMX y EDOMEX. Facturamos cuando aplica.</p>
+      </div>
+    </section>
+
+    <!-- CTA INTERMEDIA -->
+    <section>
+      <div class="cta">
+        <h3>¿Listo para empezar?</h3>
+        <p style="margin:0;color:#e6fffb">Agenda una llamada o envíanos WhatsApp. Respondemos el mismo día.</p>
+        <a class="btn" href="#contacto">Contactar ahora</a>
+      </div>
+    </section>
+
+    <!-- GALERÍA COMPLETA -->
+    <section id="galeria">
+      <h2>Galería</h2>
+      <p class="sub">Explora más fotos de trabajos realizados. Toca para ampliar.</p>
+      <div class="grid" id="galleryGrid"></div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <p class="sub">Atención por WhatsApp. Respuesta el mismo día.</p>
+      <div class="card" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+        <div>
+          <p style="margin:.2rem 0 0"><strong>WhatsApp:</strong> <a href="https://wa.me/525574516440?text=Hola%20quiero%20cotizar%20un%20cargador%20EV" target="_blank" rel="noopener">+52 55 7451 6440</a></p>
+          <p style="margin:.2rem 0 0"><strong>Zona:</strong> CDMX y EDOMEX</p>
+          <p style="margin:.2rem 0 0"><strong>Horario:</strong> Lunes a domingo, 8:00–22:00</p>
+        </div>
+        <a class="btn" href="https://wa.me/525574516440?text=Hola%20quiero%20cotizar%20un%20cargador%20EV" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container row">
+      <p>© <span id="year"></span> Instalaciones EV. Todos los derechos reservados.</p>
+      <p><a href="#">Aviso de privacidad</a> • <a href="#">Términos</a></p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp floating button: cambia el número y mensaje -->
+  <a class="wa" aria-label="WhatsApp" href="https://wa.me/525574516440?text=Hola%20quiero%20una%20cotizaci%C3%B3n%20de%20cargador%20EV" target="_blank" rel="noopener">WA</a>
+
+  <script>
+    // Año en footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Menú móvil
+    const navToggle = document.getElementById('navToggle');
+    const menu = document.getElementById('menu');
+    navToggle?.addEventListener('click', ()=> menu.classList.toggle('open'));
+
+    // Formulario (demo sin backend). Puedes cambiar por Formspree o tu endpoint.
+    const form = document.getElementById('contactForm');
+    const formMsg = document.getElementById('formMsg');
+    form?.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(form).entries());
+      // Simulación de envío
+      await new Promise(r=>setTimeout(r, 700));
+      formMsg.textContent = '¡Gracias! Te contactaremos en breve.';
+      form.reset();
+    });
+  </script>
+  <script>
+    // Envío de testimonios por WhatsApp
+    (function(){
+      const f = document.getElementById('testiForm');
+      const msg = document.getElementById('testiMsg');
+      if(!f) return;
+      f.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const data = Object.fromEntries(new FormData(f).entries());
+        const texto = `Nuevo testimonio:%0A%0A`+
+          `Nombre: ${data.nombre}%0A`+
+          `Tipo: ${data.tipo}%0A`+
+          `Experiencia: ${data.mensaje}%0A`+
+          (data.video ? `Video: ${data.video}%0A` : '');
+        const url = 'https://wa.me/525574516440?text=' + texto;
+        window.open(url, '_blank');
+        msg.textContent = 'Gracias. Se abrirá WhatsApp para que envíes tu testimonio. Puedes adjuntar tu video ahí.';
+        f.reset();
+      });
+    })();
+  </script>
+  <div id="lightbox" style="position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;padding:20px;z-index:60">
+    <img id="lightboxImg" alt="Foto de instalación" style="max-width:92vw;max-height:88vh;border-radius:14px;box-shadow:var(--shadow)"/>
+  </div>
+
+  <script>
+    // --- Galería dinámica ---
+    (function(){
+      const files = [
+        '0ab2b6e8-ec70-4d15-80d1-efeef382c26c.png',
+        'Imagen de WhatsApp 2025-11-04 a las 18.18.03_f80e4811.jpg',
+        'Imagen de WhatsApp 2025-11-04 a las 18.18.02_072cf488.jpg',
+        'Imagen de WhatsApp 2025-11-04 a las 18.18.02_82d711c5.jpg',
+        'Imagen de WhatsApp 2025-11-04 a las 18.18.03_9cc7634d.jpg',
+        'Imagen de WhatsApp 2025-11-04 a las 18.18.01_6982b084.jpg',
+        'Imagen de WhatsApp 2025-11-04 a las 18.18.02_05d8ada5.jpg',
+        'Imagen de WhatsApp 2025-11-04 a las 18.18.01_f33ae2fa.jpg',
+        'Imagen de WhatsApp 2025-11-04 a las 18.18.03_0bed374f.jpg',
+        'Imagen de WhatsApp 2025-11-04 a las 18.18.03_ed4a4f7f.jpg'
+      ];
+      const grid = document.getElementById('galleryGrid');
+      if(grid){
+        grid.innerHTML = files.map(fn => `
+          <a class="card" href="assets/${fn}">
+            <img src="assets/${fn}" alt="Trabajo realizado" loading="lazy" />
+          </a>`).join('');
+      }
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightboxImg');
+      grid?.addEventListener('click', (e)=>{
+        const a = e.target.closest('a');
+        if(!a) return;
+        e.preventDefault();
+        lbImg.src = a.href;
+        lb.style.display = 'flex';
+      });
+      lb?.addEventListener('click', ()=>{ lb.style.display = 'none'; lbImg.src=''; });
+    })();
+  </script>
+</body>
+</html>
