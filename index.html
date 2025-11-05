@@ -328,29 +328,41 @@
   </div>
 
   <script>
-    // --- Galería dinámica ---
-    // --- Galería dinámica ---
-(function(){
-  const files = Array.from({length: 10}, (_, i) => `galeria/galeria${i+1}.jpg`);
-  const grid = document.getElementById('galleryGrid');
-  if(grid){
-    grid.innerHTML = files.map(fn => `
-      <a class="card" href="assets/${fn}">
-        <img src="assets/${fn}" alt="Trabajo realizado" loading="lazy" />
-      </a>`).join('');
-  }
-  const lb = document.getElementById('lightbox');
-  const lbImg = document.getElementById('lightboxImg');
-  grid?.addEventListener('click', (e)=>{
-    const a = e.target.closest('a');
-    if(!a) return;
-    e.preventDefault();
-    lbImg.src = a.href;
-    lb.style.display = 'flex';
-  });
-  lb?.addEventListener('click', ()=>{ lb.style.display = 'none'; lbImg.src=''; });
-})();
-  </script>
-</body>
-</html>
+  // --- Galería dinámica: usa assets/galeria/galeria1.jpg ... galeria10.jpg
+  (function () {
+    // ORDENA AQUÍ: lista explícita en el orden que quieres
+    const files = [
+      'galeria/galeria1.jpg',
+      'galeria/galeria2.jpg',
+      'galeria/galeria3.jpg',
+      'galeria/galeria4.jpg',
+      'galeria/galeria5.jpg',
+      'galeria/galeria6.jpg',
+      'galeria/galeria7.jpg',
+      'galeria/galeria8.jpg',
+      'galeria/galeria9.jpg',
+      'galeria/galeria10.jpg'
+    ];
 
+    const grid = document.getElementById('galleryGrid');
+    if (grid) {
+      grid.innerHTML = files.map(fn => `
+        <a class="card" href="assets/${fn}">
+          <img src="assets/${fn}" alt="Trabajo realizado" loading="lazy"
+               onerror="this.closest('a').style.display='none'"/>
+        </a>`).join('');
+    }
+
+    // Lightbox simple
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightboxImg');
+    grid?.addEventListener('click', (e) => {
+      const a = e.target.closest('a');
+      if (!a) return;
+      e.preventDefault();
+      lbImg.src = a.href;
+      lb.style.display = 'flex';
+    });
+    lb?.addEventListener('click', () => { lb.style.display = 'none'; lbImg.src = ''; });
+  })();
+</script>
